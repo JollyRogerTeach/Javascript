@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Metric Converter</title>
+	
+		<style>
+			
+			body{
+				background-color:#EADEDB ;
+				color: DarkGreen;
+				text-align:center;
+				
+			}
+			
+			h1{
+				color: #B565A7;
+				text-align: center;
+				background-color:#DBB1CD;
+				padding: 2% 0;
+			
+			}
+			
+			#wrapper {
+				
+				width: 65%;
+				margin:0 auto;/*centers document on page ist number top and bottom 2nd "auto" left and write*/
+				background-color: #DFCFBE;
+				border: thick solid DarkGreen;
+				padding: 5%;
+                
+               
+				
+			}
+			h3{
+			color: DarkGreen;
+			font-size: 42px;
+			}
+			
+			p{
+				font-size:45px;
+			}
+			
+             .footer {
+                font-family: Comic Sans MS;
+                color: rgb(0, 210,0);
+                }
+             .copyright {
+                font-family: Comic Sans MS;
+                color: rgb(0,0,0);
+                }
+           
+			
+		
+		</style>
+		
+		<script>
+			
+		
+		function calcCentimeters(feet,inches){		
+			
+			var feet2inches = feet * 12; // feet to Inches = feet x 12
+			var totalInches = feet2inches + (inches *1); //ADD inches to feet To Inches
+			var centimeters = (totalInches * 2.54).toFixed(0);  // converts totalInches to centimeters with .toFixed
+			//var centimeters = Math.round((totalInches * 2.54));  // Rounds up to nearest whole number using Math.round
+			//var centimeters = ((feet * 12) + inches) * 2.54)).toFixed(0); // Alternate Calculation Method
+			alert(centimeters + " centimeters ");
+			console.log();
+            document.getElementById("write_centimetres").innerHTML = feet + " feet " + inches + " inches " + " is " + centimeters + " centimetres"; //Display centimetres + " centimetres" on the page
+		}//Display centimeters + " centimetres"
+		
+		
+		//Pseudocode
+		//INPUT feet
+		//INPUT inches
+		//CONVERT  feet to Inches
+		// feet to Inches = feet x 12
+		//ADD inches to feet To Inches
+		//CONVERT total Inches to centimeters
+		 // centimeters=totalInches x 2.54
+		//Round centimeters to nearest 
+		// whole number		 
+		//Display centimeters + " centimetres"
+
+	
+			console.log(calcCentimeters);
+		
+		
+		</script>
+		
+	</head>
+	
+		<body>
+			<div id="wrapper">
+				
+				<h1>Metric Converter</h1>
+				<p> Convert Feet and inches to Centimetres </p></p>
+				<button onclick ="calcCentimeters(prompt('Please enter Feet ',5),prompt('Please enter inches',6));">Click Me to Start Converting
+				
+				</button><!--INPUT feet INPUT inches -->
+				  <p id="write_centimetres"></p>              
+				  <footer class="footer">
+                <span class="copyright">&copy;</span> JollyRogerTeach 2018
+                </footer>
+			</div>
+		</body>
+</html>
