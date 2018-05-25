@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+		<title>Laser Warriors</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+	</head>
+	<body>	
+		<div id="wrapper">		
+			<h1>laser warriors leader board</h1>
+			<h2>*** Game Number #118 *** Location: Lonestar's *** Date: 9th June 2018 ***</h2>
+			<p>The following results are those of players from Laser Warriors</p>
+			<h3>Player Scores</h3>
+			<table id="playersTable"></table>
+			
+			 
+            <input type="text" name="txt" id="searchName" placeholder="Search Player" >
+            <button onclick="document.getElementById('result').innerHTML= playersArray.find(findName).name">search name</button> 
+			 <button onclick="document.getElementById('result1').innerHTML= playersArray.find(findName).hits"> hits</button>
+			 <button onclick="document.getElementById('result2').innerHTML= playersArray.find(findName).misses">misses</button> 
+			  <button onclick="document.getElementById('result3').innerHTML= playersArray.find(findName).totalfired">totalfired</button> 
+			   <button onclick="document.getElementById('result4').innerHTML= playersArray.find(findName).accuracy">accuracy</button> 
+            
+           
+			<table id="resultTable"><tr></tr><tr><td id="result">name</td><td id="result1">hits</td><td id="result2">misses</td><td id="result3">totalfired</td><td id="result4">accuracy</td></tr>
+			</table>
+			<script>
+			
+			
+			var playersArray = [
+				{"name": "George", "hits": 45, "misses": 349, "totalfired": 394, "accuracy": 11.42},
+				{"name": "Fred", "hits": 56, "misses": 300, "totalfired": 356, "accuracy": 15.73},
+				{"name": "Jane", "hits": 67, "misses": 401, "totalfired": 468, "accuracy": 14.32},
+				{"name": "Jurgen", "hits": 118, "misses": 39, "totalfired": 157, "accuracy": 75.15},
+				{"name": "Lacey", "hits": 23, "misses": 589, "totalfired": 612, "accuracy": 3.75},
+				{"name": "Gretchen", "hits": 61, "misses": 287, "totalfired": 348, "accuracy": 17.52},
+				{"name": "Gordon", "hits": 70, "misses": 204, "totalfired": 274, "accuracy": 25.54},
+				{"name": "Tom", "hits": 55, "misses": 331, "totalfired": 386, "accuracy": 14.24},
+				{"name": "Sam", "hits": 69, "misses": 192, "totalfired": 261, "accuracy": 26.43},
+				{"name": "Kate", "hits": 103, "misses": 430, "totalfired": 533, "accuracy": 19.32},
+				{"name": "Sean", "hits": 17, "misses": 58, "totalfired": 75, "accuracy": 22.66},
+				{"name": "Brody", "hits": 60, "misses": 294, "totalfired": 354, "accuracy": 16.94}
+								];
+			
+			console.log("Contents of playersArray: " + playersArray);
+			
+            function findName(player) {
+            
+                return player.name.toUpperCase() == document.getElementById('searchName').value.toUpperCase();// get name from input_
+                
+            }
+            
+            function highlightFirstRow(trs)
+				{
+					var trs = document.getElementById('playersTable').getElementsByTagName('tr');
+                    trs[0].className = "highlight";
+                    trs[1].className = "leader";
+                    
+                objTable.innerHTML = tableRows;
+				}
+			
+			function sortAlphabet() {
+			
+		
+				playersArray.sort(function(a, b) {
+					
+					var nameA = a.name.toUpperCase(); 
+					var nameB = b.name.toUpperCase(); 
+					
+					if (nameA < nameB) {
+						return -1;
+					}
+					if (nameA > nameB) {
+						return 1;
+					}
+
+					
+					return 0;
+				});	
+			}
+			
+			function sortNumeric() {
+			
+				playersArray.sort(function(a, b){
+				
+					return b.hits - a.hits; 
+				
+				});	
+			
+			}
+			
+            function deletePlayer(playersToDelete) {
+                console.log("about to del" + playersArray[playersToDelete].name);
+                 playersArray.splice(playersToDelete, 1);
+                
+                printplayersTable();
+			
+            }
+            
+            function addPlayer() {
+			
+				//alert("BOO!");
+				var objplayerName = document.getElementById("playerName").value;
+                
+			    var objplayerHits = document.getElementById("playerHits").value;
+			 
+			    var objplayerMisses = document.getElementById("playerMisses").value;
+			
+			    var objplayerTotalfired = document.getElementById("playerTotalfired").value;
+				
+                var objplayerAccuracy = document.getElementById("playerAccuracy").value;
+				
+				playersArray.push({"name":objplayerName,"hits": objplayerHits,"misses":objplayerMisses,"totalfired":objplayerTotalfired,"accuracy":objplayerAccuracy});
+                
+                 printplayersTable(); 
+                  
+			}
+            
+            function searchPlayer() {
+			
+				//alert("BOO!");
+				var objplayerName = document.getElementById("playerName").value;
+                
+			    var objplayerHits = document.getElementById("playerHits").value;
+			 
+			    var objplayerMisses = document.getElementById("playerMisses").value;
+			
+			    var objplayerTotalfired = document.getElementById("playerTotalfired").value;
+				
+                var objplayerAccuracy = document.getElementById("playerAccuracy").value;
+				
+				playersArray.push({"name":objplayerName,"hits": objplayerHits,"misses":objplayerMisses,"totalfired":objplayerTotalfired,"accuracy":objplayerAccuracy});
+                
+                 printplayersTable(); 
+                  
+			}
+            
+			
+			function printplayersTable() {
+				
+				sortAlphabet();
+				sortNumeric();
+				
+				
+				var objTable = document.getElementById("playersTable");
+				
+				var tableRows = '<tr><th>Name</th><th>Hits</th><th>Misses</th><th>Totalfired</th><th>Accuracy</th></tr>'; 
+			
+				
+				for (var index =0; index < playersArray.length; index++) {
+				
+				tableRows += '<tr><td>' + playersArray[index].name + '</td><td>' + playersArray[index].hits + '</td><td>' + playersArray[index].misses + '</td><td>' + playersArray[index].totalfired + '</td><td>' + playersArray[index].accuracy + "%"+'</td><td><button onclick="deletePlayer( '+ index +');">Delete Player</button></td></tr>'; 
+               
+				}
+                
+                tableRows += '<tr><td colspan="5"></td></tr><tr><td><input type="text" name="txtplayerName" id="playerName" placeholder="New Player Name"></td><td><input type="number" name="numplayerHits" id="playerHits" min="0" max="100" placeholder="78" default "50"></td><td><input type="number" name="playerMisses" id="playerMisses" min="0" max="100" placeholder="78"></td><td><input type="number" name="playerTotalfired" id="playerTotalfired" min="0" max="100" placeholder="78"></td><td><input type="number" name="playerAccuracy" id="playerAccuracy" min="0" max="100" placeholder="78"></td><td><button onclick="addPlayer();">Add Player</button></td></tr><tr><td><input type="text" name="txtplayerSearch" id="playerSearch" placeholder="Search Player"></td><td></tr>';
+                
+				
+				
+				objTable.innerHTML = tableRows; 
+			}
+			
+			printplayersTable(); 
+			
+			</script>
+		</div>
+	</body>
+</html>
