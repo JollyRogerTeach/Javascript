@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Apostrophe Catastrophe</title>
+		<meta charset="UTF-8">
+		<style>	
+			HTML{
+				width:900px;
+				background-color: Cream;
+			}
+			body {
+				background-color: BlanchedAlmond;
+				color: black;
+				width:60%;
+			}
+			
+			h1 {
+				
+				text-align: left;
+				border-radius:25px;
+				color: DarkRed;
+				padding: 3% 0;
+				text-shadow: 2px 2px 2px grey;				
+			}
+			
+			table {
+				width: 500px;				
+				background-color: blanchedAlmond;
+				border:25px;
+				
+			}
+			
+			th {
+				width: 30%;
+				background-color: DarkRed;
+				color:Wheat;
+				border:0px;
+				
+			}
+			td {
+			width:30%;
+			text-align:center;			
+			
+			}
+			
+			tr:nth-child(even){
+			background-color: #f2f2f2;
+			width:auto;
+			}
+			
+			
+			
+			
+			#wrapper {
+				width: 100%;
+				margin: 0 auto;
+				background-color: Wheat;
+				border-radius: 25px;
+				padding: 5%;
+				
+			}
+			
+			.redtext {
+			  color: Red;
+			}
+			.greentext {
+			  color: Green;
+			}
+			
+			.footer {
+                font-family: Comic Sans MS;
+                color: rgb(0, 210,0);
+				font-size: 6;
+                }
+				
+			.button {
+			font-family: Comic Sans MS;
+			color: rgb(0, 210,0);
+			font-size: 8;
+			background-color:Green;
+			color:Gold;
+			}
+		
+			img {
+			width:175px;
+			margin:5px;
+			border:5px;
+			border-radius: 5px;
+			box-shadow:5px 5px 5px Grey;
+			float: left;
+			padding: 3 20px;
+		}
+		
+		p {
+		 width:80%;
+		 text-align:justify;
+		}
+		cite {
+		width:100%;
+		}
+			
+			
+		</style>
+	</head>
+	
+	<body>
+		
+		<div id="wrapper">
+		
+			<script>
+				
+			
+			  // Begin
+			  // SET arrSentences[0 to 4] 
+			  // SET counter to zero			  			  
+			  // DECISION is counter < number of questions in arrSentences?
+			  // NO DECISION  END
+			  // DISPLAY question from arrSentences 				
+			  // INPUT userAnswer 
+			  // DECISION does counter divide by 2 with no remainder?				  
+			  // SET correctAnswer to 's			  
+			  // SET correctAnswer to s 
+			  
+			  // DECISION is userAnswer = correctAnswer?
+			  // YES DISPLAY "Correct!"
+			  // NO DISPLAY "incorrect!"
+			  // SET counter to counter + 1
+			  // DISPLAY Total Correct
+				
+				
+				
+				
+				
+				// Begin<br/>				
+				function apostrophe(){
+				
+					// SET arrSentences[0 to 4]	
+					
+					var arrSentences = [ " Bambi_ a deer ", " The deer has spots on it_ back " , " Bambi_ friends are super cute ", " A parent deer must watch out for it_ young " ," It_ deer-hunting season "];
+					
+					
+					var counter = 0; // hold running total questions and also to determine the even numbered questions starting at zero.
+					
+					// DECISION is counter < number of questions in arrSentences?<br/>
+					
+					while (counter < 5) {					
+					
+						var userAnswer = [];						
+						
+						var objTable = document.getElementById("myTable");
+						
+						var divResults = document.getElementById("results"); 
+						
+						var TotalCorrect = 0;
+						
+						var question;
+						//var index = arrSentences.indexOf("[question]");
+						
+						// DISPLAY question from arrSentences 	
+						for (question in arrSentences) {
+						
+							
+							 // INPUT userAnswer 				
+							userAnswer[question] = confirm( arrSentences[question] + "\n\n To insert    's   Press OK \n or press Cancel for s ");
+							console.log(" userAnswer: " + userAnswer[question]  + arrSentences[question] + "arrSentences[question]" );	
+												
+							// DECISION does counter divide by 2 with no remainder?		
+							
+								
+							// Even counter sentences will give correct answer when Ok is selected. Odd counter sentences will give the correct answer if cancel is selected. All other options choose the incorrect answer .	
+							
+							
+								if((counter % 2 == 0) && (userAnswer[question] = true)){   
+									alert(" Correct ");
+									counter = counter + 1;
+									TotalCorrect = TotalCorrect + 1;
+									console.log(" \nTotalCorrect " + TotalCorrect + "\n");
+									
+									
+									objTable.innerHTML += ("<tr><td style='text-align: left;' >" + arrSentences[question].replace(/_/g, '\'s') +"</td><td style='text-align: center;' class='greentext'>" + " Correct " + "</td><td>" + TotalCorrect +"</td></tr>"); 
+									// +=  Writes EVERY question in arrSentences to myTable using Dot object notation for the variable objTable	
+									
+								}else{(counter % 2 != 0) && (userAnswer[question] = false)
+									alert(" Correct ");
+									counter = counter + 1;
+									TotalCorrect = TotalCorrect + 1;
+									console.log(" counter " + counter);
+									
+									objTable.innerHTML += ("<tr><td style='text-align: left;'>" + arrSentences[question].replace(/_/g, 's') +"</td><td style='text-align: center;' class='greentext' >" + " Correct "  + "</td><td>"+ TotalCorrect +"</td></tr>"); 
+									// +=  Write EVERY question in arrSentences to myTable using Dot object notation for the variable objTable
+																
+								}
+								
+								if((counter % 2 != 0) && (userAnswer[question] = true)){
+									alert(" Incorrect ");
+									counter = counter + 1;
+									TotalCorrect = TotalCorrect; // causes duplicate row in table
+									console.log(" counter " + counter);
+																	
+									objTable.innerHTML += ("<tr><td style='text-align: left;'>" + arrSentences[question].replace(/_/g, 's') +"</td><td style='text-align: center;' class='redtext' >" + " Incorrect "  + "</td><td>"+ TotalCorrect +"</td></tr>"); 
+									// +=  Write EVERY question in arrSentences to myTable using Dot object notation for the variable objTable
+									
+								}else{(counter % 2 == 0) && (userAnswer[question] = false);
+									alert(" Incorrect ");
+									counter = counter + 1;
+									TotalCorrect = TotalCorrect;//causes duplicate row in table error
+									console.log(" counter " + counter);
+									
+									objTable.innerHTML += ("<tr><td style='text-align: left;'>" + arrSentences[question].replace(/_/g, '\'s') +"</td><td style='text-align: center;' class='redtext' >" + " Incorrect "  + "</td><td>"+ TotalCorrect +"</td></tr>"); 
+									// +=  Write EVERY question in arrSentences to myTable using Dot object notation for the variable objTable
+									
+								}
+							
+													
+							divResults.innerHTML = ("<p style='text-align: left;'class = 'greentext' >" + " Total Correct is " + TotalCorrect + "</p>");
+						 
+						
+						}
+					} 
+				}	
+
+							
+			</script>
+			<div><img src ="Its_me.png" alt="It's"></div>
+			<div id="content">	
+				<h1>Apostrophe Catastrophe</h1>		
+			
+			<cite>Gough Whitlam Campaign 1972 It's Time <br/>Gold Coast Seniors April 2018</cite>
+				
+				
+				
+				
+			<p>			  
+			Like most English speakers, you <br/> probably misuse "its" with "it's" on occasion Also there is no such thing as its'. <br/><br/>
+			
+			The word <b> its </b> owns what follows. This is known as the posessive form <br/><br/>
+			
+			Example: The dog hurt its paw.<br/><br/>
+
+			The word <b>it's </b> can be written from it is. This is called a contraction<br/><br/>
+			
+			Example:<br/><br/>			
+			It’s a shame that the dog hurt its paw.<br/><br/>
+			
+			
+			The following sentences are incomplete and show an underscore.<br/>
+			You must decide if <b>&nbsp s &nbsp</b> completes the sentence. If it does, press OK.<br/><br/>
+			If <b>&nbsp apostrophe s &nbsp</b> completes the sentence, Press Cancel.<br/><br/>
+			
+			Press Begin when ready.<br/><br/>			
+			</p>
+			
+			<button onClick="apostrophe();" id="" class="button" >Begin</button>
+			
+			</div>		
+				
+			<div id="results">
+			</div>
+			<table id="myTable">
+			<th>Question</th>
+			<th> Your Answer</th>
+			<th>Total Correct</th>
+			
+			</table> 
+			
+			
+			<footer class="footer">
+			<a href="https://scratch.mit.edu/projects/193102662/" target="_blank"><span class="copyright">&copyJollyRogerTeach2018</span>
+			</footer>
+				
+		
+		</div>
+	
+	</body>
+</html>

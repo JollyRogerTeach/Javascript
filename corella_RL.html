@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>JS Input Loops</title>
+		
+		<style>
+			
+			html {
+				height: 100%; /*prevents repeating images by stretching out the div over the whole page*/
+			}
+			
+			body {
+				background: #8fc800; /* Old browsers */
+				background: -moz-linear-gradient(top, #8fc800 0%, #8fc800 44%, #5ea359 86%); /* FF3.6-15 */
+				background: -webkit-linear-gradient(top, #8fc800 0%,#8fc800 44%,#5ea359 86%); /* Chrome10-25,Safari5.1-6 */
+				background: linear-gradient(to bottom, #8fc800 0%,#8fc800 44%,#5ea359 86%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fc800', endColorstr='#5ea359',GradientType=0 ); /* IE6-9 */
+				
+				color: #5EA359; /* Dark Green */
+				}
+			
+			h1 {
+				color: DarkBlue;/*Dark Green*/
+				text-align: right;
+				background-color: #d2ff52; /*Light Blue*/
+				padding: 2% 0;				
+			}
+			
+			p {
+				padding-left: 3%;
+				font-weight: bold;
+				
+			}
+			
+			
+			#wrapper {
+				width: 65%;
+				margin: 0 auto;
+				background-color: White;
+				border: thick solid DarkBlue;
+				padding: 5%;
+			}
+			
+			.standOut {
+				color: DarkOrange;
+				font-weight: bold;
+				text-shadow: 1px 0px 1px #004089; /*direction */
+			}
+			.corella {
+				width: 100%;
+				border-radius: 5%;
+				margin: 2.5%;
+				outline: 5px dotted Chartreuse;
+			
+			}
+			.footer {
+                font-family: Comic Sans MS;
+                color: rgb(0, 210,0);
+                }
+			
+		</style>
+		
+		
+		
+	</head>
+	
+	<body>
+		
+		<div id="wrapper">
+			
+			<h1>Corella Game</h1>
+			<p>Catch User's Choice, validate input for valid data type</p>
+			
+			<script>
+			
+				// AIM: User defined Loop
+				// Confirm continue looping or stop loop and exit
+				var score = 0;
+				var userInput; // Holds the user's answer.
+				var userAnswer;
+				do {
+				
+					userInput = window.confirm("Play the Corella Multiplication Game ? ");  // The confirm() method returns a Boolean value. True if user clicks "OK" or false if clicks "Cancel".
+					
+					if (userInput == true) {
+						
+						alert("     !!!!  Win A Corella !!!! \nIf you get five answers correct in a row. \nWhat you do with it is up to you...and the RSPCA")
+						document.write('<br>  ');	
+							
+								var userNum;  // Holds the user's number
+					
+					do { // Loop until the user enters a number
+					
+						//2. SET randnum 1  randomly generated  integers(make integer) between 0 	and 	12 in a single popup that prompts for the user’s answer, e.g. “What is 2 x 3 ?”
+						var randNum1 = Math.random(0) * 12;
+						console.log(randNum1);
+						randNum1 = Math.round(randNum1).toFixed(0);
+						console.log(randNum1 + " randomNum2 ");
+						
+						//3 SET randNum2 between 0 and 12 
+						var randNum2 = Math.random(0) * 12;
+						console.log(randNum2);
+						randNum2 = parseInt(Math.round(randNum2).toFixed(0));
+						console.log(randNum2 + " randomNum2 ");
+						   
+						// 6 SET correct Answer = multiply randNum1 * randNum2
+						var Answer = parseInt(randNum1 * randNum2 );
+						console.log(Answer + " Answer ");
+			
+						// 4 Display "what is" + randNum1 + "multiplied by " +randNum2 + "?"  and answer
+						window.confirm("What is " + randNum1 + " * " + randNum2 + "?");
+		
+						userNum = prompt(randNum1 + " * " + randNum2 + " = ",Answer);
+						
+						if(isNaN(userNum) == true){ // The function isNan() checks whether or not the subject value is an illegal number (Not-a-Number), returns true if the value is equal to Not-a-Number, false if it is a real number.
+						
+							alert("Enter a whole number using DIGITS e.g. 5, \n You entered this: " + userNum); // The \n is the new line character for pop-up window(like <br> inHTML).
+							
+						}else { // Hooray! User entered a number!
+						
+							
+							alert("Your Answer " + userNum )//" which has a data type of " + typeof userNum);
+							//Note: Remember, the prompt() function always returns a string value, even if it is a number.
+							//E.g. string value: "15"
+							// Versus a number value: 15
+							//userNum = userNum * 1; // Quick, dirty way, do multiplication without changing the value to force JS to think number type.
+							userNum = parseInt(userNum); // Force the data type from string to number using the parseInt() function which parses a string argument and returns an integer. If the first character cannot be converted to a number, then NaN is returned. Better way. Handles gracefully without BREAKING THE CODE. Does not interrupt the program.
+							
+											
+							// Display the number of corellas to eat
+							
+							//alert(" You ate " + userNum + " Corellas ");
+							
+							
+							
+						}
+					
+					// 7 IF userAnswer = correctAnswer THEN			
+							if (userNum == Answer){
+							   alert("\nCorrect!\n The correct answer is  " + randNum1 + " * " + randNum2 + " = " + Answer + " Your Score so far " + score );// 8 	Display "Correct!"
+							   document.write("<br> Correct!\t" + randNum1 + " * " + randNum2 + " = " + Answer); // 8 	Display "Correct!"
+								score = score + 1;
+								
+								
+							}else{//9 ELSE
+							alert("\nIncorrect!\t The correct answer is  " + randNum1 + " * " + randNum2 + " = " + Answer + " Your Score so far " + score);  // 10	Display"incorrect"
+							document.write("<br>Incorrect!<br> The correct answer is  " + randNum1 + " * " + randNum2 + " = " + Answer );  // 10	Display"incorrect"
+							score = 0;
+							}
+							
+					
+					} while (isNaN(userNum) == true) // Is it true that the user entered Not-A-Number?
+					
+					// This function displays the specified number of images (corellas) as a row of images.corella.jpg
+					
+					displayImages(score);
+					function displayImages(numImages){
+						if (score > 4){
+							document.write("<br>Answers Correct : " + numImages + " in a row !<br>");
+							alert(" !!!!! You Have Won a Corella !!!!!! ");
+							for(var control = 1; control <= numImages; control++){
+							
+								document.write('<img src="corella.jpg" class="corella">');
+								break;
+								
+							}
+						}
+					}
+					
+							
+							
+							
+							
+					}else{
+						
+						document.write('<br>User clicked cancel!');	
+					}
+				
+				} while (userInput == true) // Keep looping while the user keeps clicking OK.
+
+					// *****************************************************
+					
+					// AIM: Find out how many Corellas the user can eat, ensure that we have a whole number from the user before continuing in the program.
+					
+					// Prompt the user for a whole number
+					
+					// Keep looping until we get a whole number from the user only.
+					
+					// If the user enters a whole number, display that many Corellas on the screen.
+					
+					// If the user enters something other than a whole number, prompt again for a whole number.
+					
+				document.write("<hr>"); // Draw a horizontal rule across the page to separate what follows
+			
+				
+			</script>
+
+
+			
+				
+				
+			<button onClick = "displayImages(prompt('Please enter number of corellas ',5));"</button>
+			<footer class="footer">
+                <span class="copyright">&copy;</span> JollyRogerTeach 2018
+                </footer>
+			
+		</div>
+	
+	</body>
+</html>
