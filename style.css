@@ -1,0 +1,63 @@
+/* Theme colours:
+	#303030 - Dark Grey
+	Azure - Bluish
+	Aquamarine - Caribbean Seaish
+*/
+img {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+body {
+	background-color: Azure;
+	color: #303030; /* Dark Grey */
+    width: 100%;
+}
+
+h1 {
+	color: Aquamarine;
+	text-align: right;
+	background-color: Grey;	
+	/*background-color: #303030;*/
+	padding: 2%;				
+}
+
+#wrapper {
+	width: 65%;
+	margin: 0 auto;
+	
+	border: thick solid Aquamarine;
+	padding: 5%;
+}
+
+#studentTable {
+	width: 100%;
+    border: thin solid Magenta;
+}
+#studentTable th {
+	width: 100%;
+    border: thin solid Yellow;
+	padding: 5%;
+	text-align: left;
+}
+#studentTable td {
+	width: 100%;
+    border: thin solid Aquamarine;
+	padding: 5%;
+    text-align: left;
+}
+.button {
+font-family: Comic Sans MS;
+color: rgb(0, 210,0);
+font-size: 8px;
+background-color:Green;
+color:Gold;
+}
+.highlight{
+	
+    background-color:Chartreuse;
+    font-weight:bold;
+    
+}
+
+			
+	
