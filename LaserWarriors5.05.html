@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+		<title>Laser Warriors</title>
+		<link rel="stylesheet" type="text/css" href="style1.css">
+		
+	</head>
+	<body onLoad = "highlightFirstRow()">	<!--Bold and highlight the top-ranking player-->
+			
+		<div id="wrapper">	
+            <img src="img_laser.png" id="imgBanner"  alt="laser image" title="laser image">
+			<!--location and date of the game played:•	Game Number #118	•	Location: Lonestar’s•	Date: 9th June 2018
+				-->
+			<h1>laser warriors leader board</h1>
+			<h2>*** Game Number #118 *** Location: Lonestar's *** Date: 9th June 2018 </h2>
+			<p>The following results are those of players from Laser Warriors</p>
+			<h3>Player Scores</h3>
+			
+			<table id="playersTable"></table>
+            <p>Search Player:</p>
+             <!-- input fields searching the array for a player by their name -->
+			
+			<input type="text" name="inputName" id="searchName" placeholder="Search Player" required autofocus>
+			
+			<button onclick="document.getElementById('resultTableSortName').innerHTML='<table><tr><td >Name</td><td>Hits</td><td>Misses</td><td>Totalfired</td><td>Accuracy %</td><td>Team</td></tr><tr><td>' + playersArray.find(findName).name + '</td><td>' + playersArray.find(findName).hits + '</td><td>' +  playersArray.find(findName).misses + '</td><td>' + playersArray.find(findName).totalfired + '</td><td>' + playersArray.find(findName).accuracy + '</td><td>' + playersArray.find(findName).team + '</td></tr></table>'">search name</button> 
+		
+			
+			<table id="resultTableSortName">
+			</table>
+			
+			<p>Search Hits:</p>
+			<input type="text" name="inputHits" id="searchHits" placeholder=" Search Hits eg. 50 ">
+			
+			<button onclick="document.getElementById('resultTableSortHits').innerHTML='<table><tr><td >Name</td><td>Hits</td><td>Misses</td><td>Totalfired</td><td>Accuracy %</td><td>Team</td></tr><tr><td>' + playersArray.find(findHits).name + '</td><td>' + playersArray.find(findHits).hits + '</td><td>' +  playersArray.find(findHits).misses + '</td><td>' + playersArray.find(findHits).totalfired + '</td><td>' + playersArray.find(findHits).accuracy + '</td><td>'  + playersArray.find(findHits).team +  '</td></tr></table>'">search hits </button>          
+            
+			
+			<table id="resultTableSortHits"></table>
+			
+			 
+			 
+			 
+			 <p>Search Team:</p>
+			<input type="text" name="inputTeam" id="searchTeam" placeholder=" Team Search">
+			
+			<button onclick="document.getElementById('resultTableSortTeam').innerHTML='<table><tr><td >Name</td><td>Hits</td><td>Misses</td><td>Totalfired</td><td>Accuracy %</td><td>Team</td></tr><tr><td>' + playersArray.find(findTeam).name + '</td><td>' + playersArray.find(findTeam).hits + '</td><td>' +  playersArray.find(findTeam).misses + '</td><td>' + playersArray.find(findTeam).totalfired + '</td><td>' + playersArray.find(findTeam).accuracy + '</td><td>'  + playersArray.find(findTeam).team +  '</td></tr></table>'">search team </button>          
+            
+			
+			<table id="resultTableSortTeam"></table>
+			 
+				
+			
+			
+				<script>
+					//  START   Load Highlight function
+                    //  PROCESS get zeroith element from players table row element tag name
+                    //  PROCESS highlight and bold using style sheet class
+                    //  DISPLAY Players Table
+                    
+                    //  SET players array
+                                        
+                    //  INPUT   Player name 
+                    //  PROCESS function find Player name in array
+                    //  DISPLAY Result Table by Name
+                    
+                    //  INPUT   Search Hits
+                    //  PROCESS function find player hits
+                    //  DISPLAY Result Table Hits
+ 
+                    //  INPUT   Button click Alpha Sort
+                    //  PROCESS function Sort Players by alphabet descending
+                    //  DISPLAY Players Table 
+                     
+                    //  INPUT   Button click players sort number
+                    //  PROCESS function sort numeric
+                    //  DISPLAY Players Table
+                    
+                    //  INPUT   Button click Add Player
+                    //  PROCESS function Add Player
+                    //  DISPLAY Players Table
+                    
+                    //  INPUT   Button click Delete Player
+                    //  PROCESS function Delete Player
+                    //  DISPLAY Players Table
+                    
+			
+             //predefined list of players and scores, loaded into a single array of player objects
+			 
+			 
+			var playersArray = [
+				{"name": "George", "hits": 45, "misses": 349, "totalfired": 394, "accuracy": 11.42,"team": "Apache"},
+				{"name": "Fred", "hits": 56, "misses": 300, "totalfired": 356, "accuracy": 15.73,"team": "Comanche"},
+				{"name": "Jane", "hits": 67, "misses": 401, "totalfired": 468, "accuracy": 14.32,"team": "Iraquoi"},
+				{"name": "Jurgen", "hits": 118, "misses": 39, "totalfired": 157, "accuracy": 75.15,"team": "Navaho"},
+				{"name": "Lacey", "hits": 23, "misses": 589, "totalfired": 612, "accuracy": 3.75,"team": "Apache"},
+				{"name": "Gretchen", "hits": 61, "misses": 287, "totalfired": 348, "accuracy": 17.52,"team": "Comanche"},
+				{"name": "Gordon", "hits": 70, "misses": 204, "totalfired": 274, "accuracy": 25.54,"team": "Iraquoi"},
+				{"name": "Tom", "hits": 55, "misses": 331, "totalfired": 386, "accuracy": 14.24,"team": "Navaho"},
+				{"name": "Sam", "hits": 69, "misses": 192, "totalfired": 261, "accuracy": 26.43,"team": "Comanche"},
+				{"name": "Kate", "hits": 103, "misses": 430, "totalfired": 533, "accuracy": 19.32,"team": "Navaho"},
+				{"name": "Sean", "hits": 17, "misses": 58, "totalfired": 75, "accuracy": 22.66,"team": "Apache"},
+				{"name": "Brody", "hits": 60, "misses": 294, "totalfired": 354, "accuracy": 16.94,"team": ""}
+								];
+				
+				
+			console.log("Contents of playersArray: " + [playersArray.length]);
+			
+			//console.log("Contents of playersArray: " + playersArray);// confirm contents of Array
+		
+		
+			function findName(player) {
+				    
+				return player.name.toUpperCase() == document.getElementById('searchName').value.toUpperCase();
+			 
+			}
+			function findHits(player) {
+				
+				return player.hits == document.getElementById('searchHits').value.toUpperCase();
+                
+            }
+			function findTeam(player) {
+				
+				
+				return player.team = document.getElementById('searchTeam').value.toUpperCase();
+                
+            }
+			
+			
+			
+			
+			function sortAlphabet() {
+			
+		
+				playersArray.sort(function(a, b) {
+					
+					var nameA = a.name.toUpperCase(); 
+					var nameB = b.name.toUpperCase(); 
+					
+					if (nameA < nameB) {
+						return -1;
+					}
+					if (nameA > nameB) {
+						return 1;
+					}
+
+					
+					return 0;
+				});	
+			}	 
+                
+			
+			
+			// 3.loading data into the array. Sort the array numerically in descending order by hits
+			
+			function sortNumeric() {
+			
+				playersArray.sort(function(a, b){
+					
+					
+					return b.hits - a.hits; //Sort numerically in descending order
+				
+				});	
+			
+			}printplayersTable();
+			//delete button for each player that deletes that player object from the array and refreshes the board.
+
+            function deletePlayer(playersToDelete) {
+                var playerDelete = confirm("about to del" + playersArray[playersToDelete].name);
+                 if (playerDelete == true){
+					playersArray.splice(playersToDelete, 1);
+					
+				 }else{
+				    
+				  
+				 }
+						       
+                printplayersTable();
+			
+            }
+            
+			
+            function addPlayer() {
+			
+				var objplayerName = document.getElementById("playerName").value;
+                
+			    var objplayerHits = document.getElementById("playerHits").value;
+			 
+			    var objplayerMisses = document.getElementById("playerMisses").value;
+			
+			    var objplayerTotalfired = document.getElementById("playerTotalfired").value;
+				
+				var objplayerAccuracy = document.getElementById("playerAccuracy").value;
+				
+				var objplayerTeam = document.getElementById("playerTeam").value;
+				
+				//var playerGrouping = parseInt(objplayerHits/objplayerTotalfired * 100);
+				
+				//var objplayerGrouping = document.getElementById("playerGrouping").value;
+				
+				playersArray.push({"name": objplayerName,"hits": objplayerHits,"misses": objplayerMisses,"totalfired": objplayerTotalfired,"accuracy": objplayerAccuracy,"team":objplayerTeam});
+                
+                               
+                 printplayersTable(); 
+                  
+			}
+            
+			// display the results in a tabular format
+			function printplayersTable() {
+				
+				// call sort function. sort numerically in descending order
+				//sortNumeric();
+			
+				
+				var objTable = document.getElementById("playersTable");//write contents of objTable to div ID playersTable
+				//column headers 
+				var tableRows = '<tr><td><button id="playersSortAlpha" onclick="playersSortAlpha();">Sort Alphabet</button></td><td><button id="playersSortHits" onclick="playersSortHits();">Sort Hits</button></td><td><button id="playersSortTeam" onclick="playersSortTeam();">Sort Team</button></td></tr><tr><th>Name</th><th>Hits</th><th>Misses</th><th>Totalfired</th><th>Accuracy</th><th>Team</th></tr>'; //Table Header
+			
+				
+				for (var index = 0; index < playersArray.length; index++) 
+                {
+                
+				 if (index == 0 ) {
+					//Bold and highlight the top-ranking player class = "highlight"
+			
+					
+					tableRows += '<tr></tr><tr class = "highlight"><td>' + playersArray[index].name + '</td><td>' + playersArray[index].hits + '</td><td>' + playersArray[index].misses + '</td><td>' + playersArray[index].totalfired + '</td><td>' + playersArray[index].accuracy + " %"+'</td><td>' + playersArray[index].team + '</td><td><button onclick="deletePlayer( '+ index +');">Delete Player</button></td></tr>'; 
+				 }else{
+				 
+					tableRows += '<tr><td>' + playersArray[index].name + '</td><td>' + playersArray[index].hits + '</td><td>' + playersArray[index].misses + '</td><td>' + playersArray[index].totalfired + '</td><td>' + playersArray[index].accuracy + " %"+'</td><td>' + playersArray[index].team + '</td><td><button onclick="deletePlayer( '+ index +');">Delete Player</button></td></tr>'; 
+				 }  
+				} 
+                // input fields for the user to add a new player and their hit score, that enters a new player
+				//Searching the array for a player by their name or by their hit score
+                tableRows += '<tr><td><input type="text" name="txtplayerName" id="playerName" placeholder="New Player"></td><td><input type="number" name="numplayerHits" id="playerHits" min="0" max="100" placeholder="78"></td><td><input type="number" name="playerMisses" id="playerMisses" min="0" max="100" placeholder="78"></td><td><input type="number" name="playerTotalfired" id="playerTotalfired" min="0" max="100" placeholder="78"></td><td><input type="number" name="playerAccuracy" id="playerAccuracy" min="0" max="100" placeholder="78"></td><td><input type="text" name="playerTeam" id="playerTeam" placeholder="Team"></td><td><button onclick="addPlayer();">Add Player</button></td></tr> <tr><td colspan="3"></td></tr>';
+                
+				
+				
+				objTable.innerHTML = tableRows; 
+			}
+			
+			
+			printplayersTable();
+
+
+			
+			
+          function playersSortAlpha() {
+				 
+				sortAlphabet();
+				//sortNumeric();
+				printplayersTable();
+			
+			}	
+				
+			function playersSortHits() {
+				
+				//sortAlphabet();
+				sortNumeric();
+				printplayersTable();
+						
+			}
+			function playersSortTeam() {
+				  
+				//sortAlphabet();
+				//sortNumeric();
+				playersArray.sort(function(a, b) {
+					
+					var nameA = a.team.toUpperCase(); 
+					var nameB = b.team.toUpperCase(); 
+					
+					if (nameA < nameB) {
+						return -1;
+					}
+					if (nameA > nameB) {
+						return 1;
+					}
+
+					
+					return 0;
+				});	
+				
+				printplayersTable();
+						
+			}
+		   
+			//Bold and highlight the top-ranking player
+			function highlightFirstRow()	{
+				
+				var trs = document.getElementById('playersTable').getElementsByTagName('tr');
+				// text formatting
+				trs[0].className = "highlight";
+						
+                printplayersTable(); 
+			}
+           	
+			 
+			
+			
+			
+			</script>
+			<p></p><p></p>
+			    <footer>
+			   
+				  <a href="https://validator.w3.org/" id="W3C_Badge" ><img src="valid-xhtml10.png" alt="W3C-Badge" title="W3C-Badge" class="copyright" /></a>
+				  
+				  <a href="https://scratch.mit.edu/projects/193102662/" target="_blank"></a><span class="copyright">
+				  &amp;JollyRogerTeach2018</span>
+			    </footer>
+		</div>
+		
+				
+	</body>
+</html>
